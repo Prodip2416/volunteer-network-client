@@ -13,7 +13,7 @@ const CreateAccount = () => {
     let history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/events/' + id)
+        fetch('https://volunteer-network-app.herokuapp.com/events/' + id)
             .then(res => res.json())
             .then(data => {
                 setEvent(data);
@@ -35,7 +35,7 @@ const CreateAccount = () => {
         newVolunteer.eventName = eventName;
         newVolunteer.eventImg = eventImg;
 
-        fetch('http://localhost:5000/addVolunteer', {
+        fetch('https://volunteer-network-app.herokuapp.com/addVolunteer', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ const CreateAccount = () => {
             .then(res => res.json())
             .then(result => {
                 if (result) {
-                    history.push('/event');
+                    history.push('/eventTask');
                 }
             })
 

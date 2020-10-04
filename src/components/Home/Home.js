@@ -11,7 +11,7 @@ const Home = () => {
     let history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/events')
+        fetch('https://volunteer-network-app.herokuapp.com/events')
             .then(res => res.json())
             .then(data => setEvent(data))
     }, []);

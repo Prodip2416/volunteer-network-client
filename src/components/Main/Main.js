@@ -25,7 +25,7 @@ const Main = () => {
                     <CreateAccount />
                 </PrivateRouter>
 
-                <PrivateRouter path="/event">
+                <PrivateRouter path="/eventTask">
                     <EventTask />
                 </PrivateRouter>
 

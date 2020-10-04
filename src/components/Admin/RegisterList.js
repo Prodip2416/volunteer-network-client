@@ -5,7 +5,7 @@ const RegisterList = () => {
     const [isDeleted, setIsDeleted] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/getVolunteers')
+        fetch('https://volunteer-network-app.herokuapp.com/getVolunteers')
             .then(res => res.json())
             .then(result => {
                 setVolunteerList(result);
@@ -14,7 +14,7 @@ const RegisterList = () => {
     }, [isDeleted])
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://volunteer-network-app.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

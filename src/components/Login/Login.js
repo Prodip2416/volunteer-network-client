@@ -4,7 +4,7 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebaseConfig';
 import { UserContext } from '../../App';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -15,7 +15,7 @@ const Login = () => {
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
 
-    const handleGoogleSignIn = () => {
+    const handleGoogleSignIn = () => { // google sign in
         firebase.auth().signInWithPopup(googleProvider).then((result) => {
             setLoggedInUser(result.user);
             history.replace(from);
@@ -27,7 +27,7 @@ const Login = () => {
         <div className="text-center account">
             <div>
                 <div>
-                    <img src="https://i.ibb.co/7r5h4KD/Group-1329.png" className="w-25 mt-3" alt="img" />
+                    <Link to="/"><img src="https://i.ibb.co/7r5h4KD/Group-1329.png" className="w-25 mt-3" alt="img" /></Link>
                 </div>
                 <div className="row">
                     <div className="col-md-3"></div>

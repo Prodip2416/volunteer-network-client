@@ -10,7 +10,7 @@ const EventTask = () => {
     const [isDeleted, setIsDeleted] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/getEventsByUser?email=' + loggedInUser.email, {
+        fetch('https://volunteer-network-app.herokuapp.com/getEventsByUser?email=' + loggedInUser.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ const EventTask = () => {
     }, [loggedInUser.email, isDeleted]);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://volunteer-network-app.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -47,7 +47,7 @@ const EventTask = () => {
                     <ul>
                         <li className="ml-3 mt-2"><Link to="/">Home</Link></li>
                         <li className="ml-3 mt-2"><Link to="/">Donation</Link></li>
-                        <li className="ml-3 mt-2"><Link to="/event">Events</Link></li>
+                        <li className="ml-3 mt-2"><Link to="/eventTask">Events</Link></li>
                         <li className="ml-3 mt-2"><Link to="/">Blog</Link></li>
                         <li className="ml-5 mt-2">{loggedInUser.displayName}</li>
                     </ul>

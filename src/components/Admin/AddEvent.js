@@ -6,7 +6,7 @@ const AddEvent = () => {
     let history = useHistory();
 
     const handleSubmit = (e) => {
-        fetch('http://localhost:5000/addEvent', {
+        fetch('https://volunteer-network-app.herokuapp.com/addEvent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

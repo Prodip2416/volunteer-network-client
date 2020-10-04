@@ -17,7 +17,7 @@ const HomeHeader = () => {
                     <ul>
                         <li className="ml-3 mt-2"><Link to="/home">Home</Link></li>
                         <li className="ml-3 mt-2"><Link to="/">Donation</Link></li>
-                        <li className="ml-3 mt-2"><Link to="/event">Events</Link></li>
+                        <li className="ml-3 mt-2"><Link to="/eventTask">Events</Link></li>
                         <li className="ml-3 mt-2"><Link to="/">Blog</Link></li>
                         {
                             loggedInUser.email ? <>  <li className="ml-5"><strong>{loggedInUser.displayName}</strong></li>
