@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import './HomeHeader.css';
 
-const HomeHeader = () => {
+const HomeHeader = ({ handleSearch }) => {
     const [loggedInUser] = useContext(UserContext);
+    const [title, setTitle] = useState('');
+
     return (
         <div>
             <div className="row header m-4">
@@ -28,15 +30,14 @@ const HomeHeader = () => {
                                     <li className="ml-5"><button className="btn btn-primary">Register</button></li>
                                 </>
                         }
-
                     </ul>
                 </div>
             </div>
             <div className="text-center m-5">
                 <h2 className="m-3">I grow by helping people in need.</h2>
                 <div className="search">
-                    <input type="text" placeholder="Search..." />
-                    <button className="btn">Search</button>
+                    <input type="text" onBlur={(e) => setTitle(e.target.value)} placeholder="Search..." />
+                    <button className="btn" onClick={() => handleSearch(title)}>Search</button>
                 </div>
             </div>
         </div>

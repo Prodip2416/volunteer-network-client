@@ -8,6 +8,7 @@ import HomeHeader from './HomeHeader/HomeHeader';
 
 const Home = () => {
     const [event, setEvent] = useState([]);
+    const [title, setTitle] = useState('');
     let history = useHistory();
 
     useEffect(() => {
@@ -16,13 +17,26 @@ const Home = () => {
             .then(data => setEvent(data))
     }, []);
 
+    useEffect(() => {
+        fetch('https://volunteer-network-app.herokuapp.com/getEventsByTitle?title=' + title, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setEvent(data);
+            })
+    }, [title]);
+
     const handleAddEvent = (id) => {
         history.push(`/account/${id}`);
     }
 
     return (
         <div className="container">
-            <HomeHeader />
+            <HomeHeader handleSearch={(title) => setTitle(title)} />
             <div className="row bg-color">
                 {
                     event && event.map(item => <Event key={item._id} task={item} handleAddEvent={handleAddEvent} />)
