@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 import './EventTask.css';
+import NoEvent from './NoEvent';
 import UserEvent from './UserEvent';
 
 const EventTask = () => {
@@ -17,7 +18,7 @@ const EventTask = () => {
             }
         })
             .then(res => res.json())
-            .then(data =>{ 
+            .then(data => {
                 setEvent(data);
                 setIsDeleted(false);
             })
@@ -30,11 +31,11 @@ const EventTask = () => {
             .then(res => res.json())
             .then((result => {
                 if (result) {
-                    setIsDeleted(true);                
+                    setIsDeleted(true);
                 }
             }));
     }
-    
+
     return (
         <div className="">
             <div className="row header event">
@@ -56,7 +57,8 @@ const EventTask = () => {
             <section className="event-list">
                 <div className="row">
                     {
-                        event && event.map(item => <UserEvent key={item._id} task={item} handleDelete={handleDelete} />)
+                        event.length ? event.map(item => <UserEvent key={item._id} task={item} handleDelete={handleDelete} />)
+                            : <NoEvent />
                     }
                 </div>
             </section>
